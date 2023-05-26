@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -12,8 +12,18 @@
     />
      <script
       src="https://kit.fontawesome.com/26504e4a1f.js"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous">
+
+</script>
+ <style media="screen">
+
+     #footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+ </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -146,18 +156,18 @@
 
       }
     }
-      
+
       function update() {
 
         if (localStorage.getItem("itemJson") == null) {
             itemJsonArray = [];
             localStorage.setItem("itemJson", JSON.stringify(itemJsonArray));
-          }  
+          }
           else {
             itemJsonArrayStr = localStorage.getItem("itemJson");
             itemJsonArray = JSON.parse(itemJsonArrayStr);
           }
-          
+
           // Populate the array
           let tablebody = document.getElementById("tablebody");
           let str = "";
@@ -172,7 +182,7 @@
           });
           tablebody.innerHTML = str;
         }
-      
+
       add = document.getElementById("add");
       add.addEventListener("click", getAndUpdate);
       update();
@@ -193,54 +203,53 @@
         }
       }
     </script>
-    
+
     <!-- Remove the container if you want to extend the Footer to full width. -->
->
 
-  <footer class="bg-dark text-center text-white">
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
-    <!-- Section: Social media -->
-    <section class="mb-4">
-     
 
-      <!-- Twitter -->
-      <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/mukuls_twt" role="button"
-        ><i class="fab fa-twitter"></i
-      ></a>
+<footer id="footer" class="bg-dark text-center text-white">
+ <!-- Grid container -->
+ <div class="container p-4 pb-0">
+   <!-- Section: Social media -->
+   <section class="mb-4">
 
-      <!-- Google -->
-      <a class="btn btn-outline-light btn-floating m-1" href="mailto:mukulbhardwaj947@gmail.com" role="button"
-        ><i class="fab fa-google"></i
-      ></a>
 
-      <!-- Instagram -->
-      <a class="btn btn-outline-light btn-floating m-1" href="https://instagram.com/mukuls_ig" role="button"
-        ><i class="fab fa-instagram"></i
-      ></a>
+     <!-- Twitter -->
+     <a class="btn btn-outline-light" href="https://twitter.com/mukuls_twt" role="button">
+       <i class="fab fa-twitter"></i>
+     </a>
 
-      <!-- Linkedin -->
-      <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/mukul-bhardwaj-45473124a/" role="button"
-        ><i class="fab fa-linkedin-in"></i
-      ></a>
+     <!-- Google -->
+     <a class="btn btn-outline-light" href="mailto:mukulbhardwaj947@gmail.com" role="button">
+       <i class="fab fa-google"></i>
+     </a>
 
-      <!-- Github -->
-      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/mb-008" role="button"
-        ><i class="fab fa-github"></i
-      ></a>
-    </section>
-    <!-- Section: Social media -->
-  </div>
-  <!-- Grid container -->
+     <!-- Instagram -->
+     <a class="btn btn-outline-light" href="https://instagram.com/mukuls_ig" role="button">
+       <i class="fab fa-instagram"></i>
+     </a>
 
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2023 Copyright:
-    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-  </div>
-  <!-- Copyright -->
+     <!-- Linkedin -->
+     <a class="btn btn-outline-light" href="https://www.linkedin.com/in/mukul-bhardwaj-45473124a/" role="button">
+       <i class="fab fa-linkedin-in"></i>
+     </a>
+
+     <!-- Github -->
+     <a class="btn btn-outline-light" href="https://github.com/mb-008" role="button">
+       <i class="fab fa-github"></i>
+     </a>
+   </section>
+   <!-- Section: Social media -->
+ </div>
+ <!-- Grid container -->
+
+ <!-- Copyright -->
+ <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+   © 2023 Copyright: Mb007
+
+ </div>
+ <!-- Copyright -->
 </footer>
-  
 
 <!-- End of .container -->
   </body>
