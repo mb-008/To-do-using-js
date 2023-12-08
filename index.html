@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -10,20 +10,17 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
-     <script
+    <script
       src="https://kit.fontawesome.com/26504e4a1f.js"
-      crossorigin="anonymous">
-
-</script>
- <style media="screen">
-
-     #footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
- </style>
+      crossorigin="anonymous"
+    ></script>
+    <style media="screen">
+      #footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -104,8 +101,10 @@
           <label for="Description"></label>
         </div>
       </div>
-      <button id="add" class="btn btn-primary"> Add to List</button>
-      <button id="clear" class="btn btn-primary" onclick="clr()"> Clear List</button>
+      <button id="add" class="btn btn-primary">Add to List</button>
+      <button id="clear" class="btn btn-primary" onclick="clr()">
+        Clear List
+      </button>
 
       <div id="items" class="my-4">
         <h2>Your Items</h2>
@@ -136,10 +135,19 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      function getAndUpdate(){
+      function getAndUpdate() {
         console.log("Updating List...");
-        til = document.getElementById("title").value;
-        desc = document.getElementById("Description").value;
+        const titleInput = document.getElementById("title");
+        const descriptionInput = document.getElementById("Description");
+
+        // Validate inputs
+        const title = titleInput.value.trim();
+        const desc = descriptionInput.value.trim();
+
+        if (title === "" || desc === "") {
+          alert("Title and description cannot be empty!");
+          return; // Exit the function if inputs are not valid
+        }
         {
           if (localStorage.getItem("itemJson") == null) {
             itemJsonArray = [];
@@ -152,105 +160,118 @@
             localStorage.setItem("itemJson", JSON.stringify(itemJsonArray));
           }
           update();
-
-
+        }
       }
-    }
 
       function update() {
-
         if (localStorage.getItem("itemJson") == null) {
-            itemJsonArray = [];
-            localStorage.setItem("itemJson", JSON.stringify(itemJsonArray));
-          }
-          else {
-            itemJsonArrayStr = localStorage.getItem("itemJson");
-            itemJsonArray = JSON.parse(itemJsonArrayStr);
-          }
+          itemJsonArray = [];
+          localStorage.setItem("itemJson", JSON.stringify(itemJsonArray));
+        } else {
+          itemJsonArrayStr = localStorage.getItem("itemJson");
+          itemJsonArray = JSON.parse(itemJsonArrayStr);
+        }
 
-          // Populate the array
-          let tablebody = document.getElementById("tablebody");
-          let str = "";
-          itemJsonArray.forEach((element, index) => {
-            str += `
+        // Populate the array
+        let tablebody = document.getElementById("tablebody");
+        let str = "";
+        itemJsonArray.forEach((element, index) => {
+          str += `
       <tr>
       <th scope = "row">${index + 1}</th>
       <td>${element[0]}</td>
       <td>${element[1]}</td>
       <td><button class="btn btn-primary" onclick="deleted(${index})">Delete</button></td>
       </tr>`;
-          });
-          tablebody.innerHTML = str;
-        }
+        });
+        tablebody.innerHTML = str;
+      }
 
       add = document.getElementById("add");
       add.addEventListener("click", getAndUpdate);
       update();
       function deleted(itemIndex) {
         console.log("Delete", itemIndex);
-        itemJsonArrayStr = localStorage.getItem('itemJson');
+        itemJsonArrayStr = localStorage.getItem("itemJson");
         itemJsonArray = JSON.parse(itemJsonArrayStr);
         // Delete itemIndex element from the array
         itemJsonArray.splice(itemIndex, 1);
         localStorage.setItem("itemJson", JSON.stringify(itemJsonArray));
-       update();
-      }
-      function clr(){
-        if(confirm("Do you want to clear whole list?"));{
-        console.log("Clearing the storage");
-        localStorage.clear();
         update();
+      }
+      function clr() {
+        if (confirm("Do you want to clear whole list?"));
+        {
+          console.log("Clearing the storage");
+          localStorage.clear();
+          update();
         }
       }
     </script>
 
     <!-- Remove the container if you want to extend the Footer to full width. -->
 
+    <footer id="footer" class="bg-dark text-center text-white">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Twitter -->
+          <a
+            class="btn btn-outline-light"
+            href="https://twitter.com/mukuls_twt"
+            role="button"
+          >
+            <i class="fab fa-twitter"></i>
+          </a>
 
-<footer id="footer" class="bg-dark text-center text-white">
- <!-- Grid container -->
- <div class="container p-4 pb-0">
-   <!-- Section: Social media -->
-   <section class="mb-4">
+          <!-- Google -->
+          <a
+            class="btn btn-outline-light"
+            href="mailto:mukulbhardwaj947@gmail.com"
+            role="button"
+          >
+            <i class="fab fa-google"></i>
+          </a>
 
+          <!-- Instagram -->
+          <a
+            class="btn btn-outline-light"
+            href="https://instagram.com/mukuls_ig"
+            role="button"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
 
-     <!-- Twitter -->
-     <a class="btn btn-outline-light" href="https://twitter.com/mukuls_twt" role="button">
-       <i class="fab fa-twitter"></i>
-     </a>
+          <!-- Linkedin -->
+          <a
+            class="btn btn-outline-light"
+            href="https://www.linkedin.com/in/mukul-bhardwaj-45473124a/"
+            role="button"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
 
-     <!-- Google -->
-     <a class="btn btn-outline-light" href="mailto:mukulbhardwaj947@gmail.com" role="button">
-       <i class="fab fa-google"></i>
-     </a>
+          <!-- Github -->
+          <a
+            class="btn btn-outline-light"
+            href="https://github.com/mb-008"
+            role="button"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+        </section>
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
 
-     <!-- Instagram -->
-     <a class="btn btn-outline-light" href="https://instagram.com/mukuls_ig" role="button">
-       <i class="fab fa-instagram"></i>
-     </a>
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright: Mb007
+      </div>
+      <!-- Copyright -->
+    </footer>
 
-     <!-- Linkedin -->
-     <a class="btn btn-outline-light" href="https://www.linkedin.com/in/mukul-bhardwaj-45473124a/" role="button">
-       <i class="fab fa-linkedin-in"></i>
-     </a>
-
-     <!-- Github -->
-     <a class="btn btn-outline-light" href="https://github.com/mb-008" role="button">
-       <i class="fab fa-github"></i>
-     </a>
-   </section>
-   <!-- Section: Social media -->
- </div>
- <!-- Grid container -->
-
- <!-- Copyright -->
- <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-   © 2023 Copyright: Mb007
-
- </div>
- <!-- Copyright -->
-</footer>
-
-<!-- End of .container -->
+    <!-- End of .container -->
   </body>
 </html>
